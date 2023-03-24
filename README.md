@@ -1,5 +1,5 @@
 # Boot-img-flasher
-This is a shell script written in bash made for flashing a boot image onto an Android device with A/B partitions without using any custom recovery and fastboot.
+This is a shell script written in bash made for flashing boot image onto an Android device with A/B partitions without using any custom recovery and fastboot.
 A boot image is a small, self-contained Linux kernel which is the core of the operating system, 
 along with other essential files needed to start the Android device.
 

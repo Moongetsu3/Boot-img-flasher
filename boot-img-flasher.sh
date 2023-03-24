@@ -21,9 +21,9 @@ by_name_path=$(find /dev/block/platform -type d -name by-name)
 # Check if the directory was found
 if [ -z "$by_name_path" ]; then
   echo ""
-  echo "/dev/block/platform by-name directory doesn't exist"
-  echo ""
   echo "Error: boot_a and boot_b partition location not found"
+  echo ""
+  echo "Reason: by-name directory doesn't exist in /dev/block/platform"
   exit 1
 fi
 
@@ -36,9 +36,9 @@ boot_b="$by_name_path/boot_b"
 
 if [ ! -e "$boot_a" ] || [ ! -e "$boot_b" ]; then
   echo ""
-  echo "boot_a or boot_b symbolic links doesn't exist in your by-name directory"
-  echo ""
   echo "Error: boot_a and boot_b partition location not found"
+  echo ""
+  echo "Reason: boot_a or boot_b symbolic links doesn't exist in your by-name directory"
   exit 1
 fi
 
@@ -50,6 +50,8 @@ boot_b_symlink=$(readlink "$by_name_path/boot_b")
 if [ -z "$boot_a_symlink" ] || [ -z "$boot_b_symlink" ]; then
   echo ""
   echo "Error: boot_a or boot_b partition location not found"
+  echo ""
+  echo "Reason: can't find out symlinks linked path"
   exit 1
 fi
 
