@@ -1,5 +1,5 @@
 # Boot-img-flasher
-This is a shell script written in bash designed to flash a boot image onto an Android device with A/B partitions. 
+This is a shell script written in bash made for flashing a boot image onto an Android device with A/B partitions without using any custom recovery and fastboot.
 A boot image is a small, self-contained Linux kernel which is the core of the operating system, 
 along with other essential files needed to start the Android device.
 
@@ -14,24 +14,24 @@ Flash any images everyone uses fastboot.
 
 Another reason :   
  > Devices with unisoc cpu running on Android 10 and up comes with vbmeta-sign and for this we needed to sign boot images with private keys after patching 
-The Boot image with magisk Otherwise if it flashed directly it will give bootloop
+the Boot image with magisk Otherwise if it flashed directly it will give bootloop
 
-So Whenever a new magisk updates comes we first need to patch the boot.img using latest Magisk spp
+So Whenever a new magisk updates comes we first need to patch the boot.img using latest Magisk app
 Then we need to sign it with private keys then we can flash it using fastboot
-And this takes a lot of time.
+And this whole process takes a lot of time.
 
 So i made this script for flashing boot img to both A/B slot without using
 Any custom recovery and fastboot it will save much time and it is very easy to use
 and this script can be used in all devices.
 
 ## How this script works ❓
-
-This script can automatically finds the location of the boot_a and boot_b slots,
+This script is very simple yet powerful and has many difference from other script because
+It doesn't replace your ramdisk by unpacking and repacking the boot image,it directly flashes the boot image.
+Also This script can automatically finds the partition location of the both boot slots,
 and can flash a specified boot image to both slots using the dd command, It also includes functions for setting 
-read-write permissions and remounting the system partitions.
+read-write permissions for several directores and remounting the device partitions as read writeable.
 
-> The 'dd' command it is a Linux/Unix command used for copying and converting data. It can be used to copy data between files, devices, and partitions, and can also be used to create disk images, wipe data, and perform other data manipulation tasks.
-
+> The 'dd' command is a Linux/Unix command used for copying and converting data. It can be used to copy data between files, devices, and partitions, and can also be used to create disk images, wipe data, and perform other data manipulation tasks.
 ## ℹ️ Usage
 
 This Script Can be used in two ways 
@@ -60,22 +60,24 @@ And flash it as a Magisk module
 Then reboot
 
 **Note 📝 : The boot image you are going to flash 
-must need be placed in your internal storage's download folder in both cases**
+must need be in your internal storage's download folder in both cases and the boot image file name should be 'boot.img'**
+**Otherwise the script will not work because it looks for boot image in the**
+```/storage/emulated/0/Download``` directory.
 
-```/storage/emulated/0/Download```
-
-# Misc ⚙️
+# ⚙️ Other benefits
 If you are on gsi that comes with prebuilt root access
 You can use magisk app to patch your boot image and then
 You can directly flash the image using my script by just giving root permission 
 Using **PHH Superuser App**
 
-So now a question will be pop up in your 
-mind **Where can i find a gsi that comes with prebuilt root access?**
+**Note** 📝 : You only need the magisk app for this It doesn't matter if the boot image is rooted using Magisk or not.
+So now a question will be pop up in your mind
+ 
+**Where can i find a gsi that comes with prebuilt root access?**
 
 Answer : All gsi comes with some Naming rules 
-So download and flash GSI that has
-bvs,bvz,bgs or bgz naming on archive.
+So download and flash a GSI that has
+bvs,bvz,bgs or bgz naming on the archive.
 
 **Here is some info about naming rules in GSI**
 
