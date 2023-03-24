@@ -70,7 +70,15 @@ You can use magisk app to patch your boot image and then
 You can directly flash the image using my script by just giving root permission 
 Using **PHH Superuser App**
 
-**Note** 📝 : You only need the magisk app for this It doesn't matter if the boot image is rooted using Magisk or not.
+**Note 1** 📝 : You only need the magisk app for this It doesn't matter if the boot image is rooted using Magisk or not.
+
+**Note 2** 📝 : You Must need to flash your custom signed vbmeta-sign.img first if your device has unisoc cpu that running on android 10 and up.
+                Because you have to also sign the boot image with private keys after patching it with magisk you can't flash it directly as i mentioned earlier
+
+For more info about signing a unisoc image with private keys read this : [**Guide**](https://www.hovatek.com/forum/thread-32674.html)
+
+For More info about custom vbmeta-sign image read this : [**Guide**](https://www.hovatek.com/forum/thread-32664.html)
+
 So now a question will be pop up in your mind
  
 **Where can i find a gsi that comes with prebuilt root access?**
